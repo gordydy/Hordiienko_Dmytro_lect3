@@ -18,11 +18,11 @@ class CurrencyConverter {
     }
 
     public double convertUsdToUah(double usd) {
-        return this.exchangeRate * usd;
+        return this.getExchangeRate() * usd;
     }
 
     private double calculateCommission(double usd) {
-        return this.convertUsdToUah(usd) * this.commission;
+        return this.convertUsdToUah(usd) * this.getCommission();
     }
 
     public double calculateTotalAmount(double usd) {
