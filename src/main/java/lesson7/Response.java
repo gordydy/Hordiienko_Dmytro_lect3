@@ -3,16 +3,18 @@ package lesson7;
 import java.util.List;
 
 public class Response<T> {
-    private List<Data<T>> data;
+    private List<T> data;
     private Pagination pagination;
+
     public Response() {
         this.data = data;
     }
-    public List<Data<T>> getData() {
+
+    public List<T> getData() {
         return data;
     }
 
-    public void setData(List<Data<T>> data) {
+    public void setData(List<T> data) {
         this.data = data;
     }
 

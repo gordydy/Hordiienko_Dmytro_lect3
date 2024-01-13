@@ -1,30 +1,30 @@
 package lesson7;
 
-public class Data<T> implements Comparable<Data<T>> {
-    private T email;
-    private T geo;
-    private int user_id;
+public class Data implements Comparable<Data> {
+    private String email;
+    private String geo;
+    private int userId;
 
-    public Data(T email, T geo, int user_id) {
+    public Data(String email, String geo, int userId) {
         this.email = email;
         this.geo = geo;
-        this.user_id = user_id;
+        this.userId = userId;
     }
 
-    public T getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public T getGeo() {
+    public String getGeo() {
         return geo;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
     @Override
-    public int compareTo(Data<T> x) {
-        return Integer.compare(this.user_id, x.user_id);
+    public int compareTo(Data x) {
+        return Integer.compare(this.userId, x.userId);
     }
 }
