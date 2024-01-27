@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Google Translate test"> <!--BEFORE SUITE-->
+    <test name="Translation on 20 different lang"> <!--BEFORE TEST-->
+        <classes>
+            <class name="lesson10.testGoogleTranslate.TestGoogleTranslate"> <!--BEFORE CLASS-->
+                <methods>
+                    <include name="TranslateTest"/> <!--BEFORE METHOD-->
+                </methods>
+            </class> <!--AFTER CLASS-->
+        </classes>
+    </test> <!--AFTER TEST-->
+</suite> <!--AFTER SUITE-->

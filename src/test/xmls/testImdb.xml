@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="IMDB"> <!--BEFORE SUITE-->
+    <test name="Test Imdb TopChart"> <!--BEFORE TEST-->
+        <classes>
+            <class name="lesson10.testImdb.TestImdb"> <!--BEFORE CLASS-->
+                <methods>
+                    <include name = "imdbTop100ChartTest"/> <!--BEFORE METHOD-->
+                </methods>
+            </class> <!--AFTER CLASS-->
+        </classes>
+    </test> <!--AFTER TEST-->
+</suite> <!--AFTER SUITE-->
