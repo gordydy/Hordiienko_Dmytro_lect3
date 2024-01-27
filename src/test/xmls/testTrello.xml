@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Trello"> <!--BEFORE SUITE-->
+    <test name="Test Trello"> <!--BEFORE TEST-->
+        <classes>
+            <class name="lesson10.testTrello.TestTrello"> <!--BEFORE CLASS-->
+                <methods>
+                    <include name = "trelloLogin"/><!--BEFORE METHOD-->
+                    <include name = "addCard"/>
+                    <include name = "addDescription"/>
+                    <include name = "addComment"/>
+                    <include name = "cardDelete"/>
+                </methods>
+            </class> <!--AFTER CLASS-->
+        </classes>
+    </test> <!--AFTER TEST-->
+</suite> <!--AFTER SUITE-->
