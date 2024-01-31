@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Test saucedemo"> <!--BEFORE SUITE-->
+    <test name="Test market saucedemo.com"> <!--BEFORE TEST-->
+        <classes>
+            <class name="lesson13.SaucedemoTest"> <!--BEFORE CLASS-->
+                <methods>
+                    <include name="loginStep"/>
+                    <include name="addToCardStep"/>
+                    <include name="checkCartItemsStep"/>
+                    <include name="overviewPageStep"/>
+                    <include name="compliteOrderStep"/>
+                    <include name="finishMessageStep"/><!--BEFORE METHOD-->
+                </methods>
+            </class> <!--AFTER CLASS-->
+        </classes>
+    </test> <!--AFTER TEST-->
+</suite>
