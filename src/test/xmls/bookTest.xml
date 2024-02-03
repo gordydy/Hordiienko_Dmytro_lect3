@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Test yakaboo books"> <!--BEFORE SUITE-->
+    <test name="Test search and check availability yakaboo books"> <!--BEFORE TEST-->
+        <classes>
+            <class name="lesson12.BookTest"> <!--BEFORE CLASS-->
+                <methods>
+                    <include name="searchBook"/>
+                    <include name="openBookPage"/>
+                    <include name="checkExistFormat"/><!--BEFORE METHOD-->
+                </methods>
+            </class> <!--AFTER CLASS-->
+        </classes>
+    </test> <!--AFTER TEST-->
+</suite>
