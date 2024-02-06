@@ -45,7 +45,7 @@ public class SaucedemoTest {
     public void checkCartItems() {
         addToCard();
         cartPage.assertItsCartPage();
-        cartPage.assertItems();
+        cartPage.assertItems(priceOne,priceTwo);
         cartPage.assertCheckout();
     }
 
