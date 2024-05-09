@@ -1,20 +1,22 @@
 package lesson13;
 
-import com.codeborne.selenide.WebDriverRunner;
 import lesson13.config.Browser;
 import lesson13.pages.*;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.open;
 
 public class SaucedemoTest {
     public static final String BASE_URL = "https://www.saucedemo.com/";
-    public static final String CART_URL = "https://www.saucedemo.com/cart.html";
-    private String url;
 
     private final String username = "standard_user";
     private final String password = "secret_sauce";
+    private final String firstName = "Valeriy";
+    private final String lastName = "Zhmyshenko";
+    private final String postalCode = "12345";
+    private String priceOne = "$7.99";
+    private String priceTwo = "$9.99";
     LoginPage loginPage = new LoginPage();
     MainPage mainPage = new MainPage();
     CartPage cartPage = new CartPage();
@@ -22,52 +24,45 @@ public class SaucedemoTest {
     OrderCompletePage orderCompletePage = new OrderCompletePage();
     FinishPage finishPage = new FinishPage();
 
-    @BeforeTest
-    public void beforeTest() {
+    @BeforeMethod
+    public void beforeMethod() {
         Browser.setBrowser();
     }
 
-
-    @Test(priority = 1)
-    public void loginStep() {
+    @Test
+    public void login() {
         open(BASE_URL);
         loginPage.login(username, password);
-        url = WebDriverRunner.getWebDriver().getCurrentUrl();
     }
 
-    @Test(priority = 2)
-    public void addToCardStep() {
-        open(url);
-        mainPage.addItemsToCart();
+    @Test
+    public void addToCard() {
+        login();
+        mainPage.addItemsToCart(priceOne, priceTwo);
     }
 
-    @Test(priority = 3)
-    public void checkCartItemsStep() {
-        open(CART_URL);
-        cartPage.assertItems();
+    @Test
+    public void checkCartItems() {
+        addToCard();
+        cartPage.assertItsCartPage();
+        cartPage.assertItems(priceOne,priceTwo);
         cartPage.assertCheckout();
-        url = WebDriverRunner.getWebDriver().getCurrentUrl();
     }
 
-    @Test(priority = 4)
-    public void overviewPageStep() {
-        open(url);
-        overviewPage.fillPersonalData();
-        url = WebDriverRunner.getWebDriver().getCurrentUrl();
+    @Test
+    public void fillPersonalData() {
+        checkCartItems();
+        overviewPage.fillFirstName(firstName);
+        overviewPage.fillLastName(lastName);
+        overviewPage.fillPostalCode(postalCode);
+        overviewPage.continueForward();
     }
 
-    @Test(priority = 5)
-    public void compliteOrderStep() {
-        open(url);
+    @Test
+    public void compliteOrder() {
+        fillPersonalData();
         orderCompletePage.evaluateTaxPercent();
         orderCompletePage.assertFinish();
-        url = WebDriverRunner.getWebDriver().getCurrentUrl();
-    }
-
-    @Test(priority = 6)
-    public void finishMessageStep() {
-        open(url);
         finishPage.assertFinnishMessage();
     }
-
 }

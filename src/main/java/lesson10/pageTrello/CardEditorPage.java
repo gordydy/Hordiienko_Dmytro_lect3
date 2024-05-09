@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class CardEditorPage {
     protected String description = "My test description";
     protected String comment = "My test comment";
-    private SelenideElement  cardEditView = $(".card-detail-window.u-clearfix");
+    private SelenideElement cardEditView = $(".card-detail-window.u-clearfix");
     private SelenideElement clickedDescriptionField = $(".ua-firefox.ProseMirror");
     private SelenideElement saveButton = $(".confirm.js-save-edit.bxgKMAm3lq5BpA.SdamsUKjxSBwGb.SEj5vUdI3VvxDc");
     private SelenideElement descriptionCreated = $(".current.markeddown.hide-on-edit.js-desc.js-show-with-desc");
@@ -28,36 +28,38 @@ public class CardEditorPage {
 
 
     /*Description*/
-    public void assertCardViewIsOpened(){
+    public void assertCardViewIsOpened() {
         cardEditView.shouldBe(Condition.visible);
     }
-    public  void createDescription(){
+
+    public void createDescription() {
         clickedDescriptionField.shouldBe(Condition.visible).click();
         clickedDescriptionField.setValue(description);
         saveButton.shouldBe(Condition.visible).click();
     }
 
-    public void assertDescriptionIsCreated(){
-       Assert.assertEquals(descriptionCreated.shouldBe(Condition.visible).getText(), description, "Description isn't created");
+    public void assertDescriptionIsCreated() {
+        Assert.assertEquals(descriptionCreated.shouldBe(Condition.visible).getText(), description, "Description isn't created");
 
     }
 
     /*Comment*/
 
-    public void createComment(){
+    public void createComment() {
         defaultCommentField.shouldBe(Condition.visible).click();
         clickedCommentField.shouldBe(Condition.visible).click();
         clickedCommentField.setValue(comment);
         commentSaveButton.shouldBe().click();
     }
+
     public void assertCommentIsCreated() {
         Assert.assertEquals(createdComment.shouldBe(Condition.visible).getText(), comment, "Description isn't created");
     }
 
-    public void deleteCard(){
+    public void deleteCard() {
         archiveButton.shouldBe(Condition.visible).click();
         deleteButton.shouldBe(Condition.visible).shouldBe().click();
         confirmDeleteButton.shouldBe(Condition.visible).click();
 
     }
-    }
+}
